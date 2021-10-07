@@ -8,7 +8,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [HttpClientTestingModule],
-      providers: [{ provide: ApiService, useClass: RemoteApiService }],
+      providers: [{ provide: ApiService, useExisting: RemoteApiService }],
     }).compileComponents();
   });
 
@@ -18,10 +18,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should get different instances for ApiService and RemoteApiService', () => {
+  it('should get same instance for ApiService and RemoteApiService', () => {
     const apiService = TestBed.inject(ApiService);
     const remoteApiService = TestBed.inject(RemoteApiService);
 
-    expect(remoteApiService).not.toBe(apiService);
+    expect(remoteApiService).toBe(apiService);
   });
 });

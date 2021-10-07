@@ -9,7 +9,7 @@ import { ApiService } from './api.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule],
-  providers: [{ provide: ApiService, useClass: RemoteApiService }],
+  providers: [{ provide: ApiService, useExisting: RemoteApiService }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
