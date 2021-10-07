@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 import { Issue } from './api.model';
 import { ApiService } from './api.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class RemoteApiService implements ApiService {
   constructor(private httpClient: HttpClient) {}
 
