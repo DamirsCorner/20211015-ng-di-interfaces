@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Issue } from './api.model';
-import { RemoteApiService } from './remote-api.service';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,8 @@ import { RemoteApiService } from './remote-api.service';
 export class AppComponent {
   public issues: Issue[] = [];
 
-  constructor(remoteApiService: RemoteApiService) {
-    remoteApiService
+  constructor(apiService: ApiService) {
+    apiService
       .getIssues('dotnet', 'runtime')
       .subscribe((issues) => (this.issues = issues));
   }
